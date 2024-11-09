@@ -1,6 +1,6 @@
-X:/GitHub_RSN/openvr/build/CMakeFiles/INSTALL.dir
-X:/GitHub_RSN/openvr/build/CMakeFiles/ALL_BUILD.dir
-X:/GitHub_RSN/openvr/build/CMakeFiles/ZERO_CHECK.dir
-X:/GitHub_RSN/openvr/build/src/CMakeFiles/openvr_api64.dir
-X:/GitHub_RSN/openvr/build/src/CMakeFiles/INSTALL.dir
-X:/GitHub_RSN/openvr/build/src/CMakeFiles/ALL_BUILD.dir
+D:/GitHub/openvr/build/CMakeFiles/INSTALL.dir
+D:/GitHub/openvr/build/CMakeFiles/ALL_BUILD.dir
+D:/GitHub/openvr/build/CMakeFiles/ZERO_CHECK.dir
+D:/GitHub/openvr/build/src/CMakeFiles/openvr_api64.dir
+D:/GitHub/openvr/build/src/CMakeFiles/INSTALL.dir
+D:/GitHub/openvr/build/src/CMakeFiles/ALL_BUILD.dir

@@ -1,0 +1,21 @@
+﻿  1>Building Custom Rule D:/GitHub/openvr/src/CMakeLists.txt
+  openvr_api_public.cpp
+  jsoncpp.cpp
+  dirtools_public.cpp
+D:\GitHub\openvr\src\vrcore\dirtools_public.cpp(36,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  envvartools_public.cpp
+  pathtools_public.cpp
+D:\GitHub\openvr\src\vrcore\pathtools_public.cpp(422,10): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\GitHub\openvr\src\vrcore\pathtools_public.cpp(549,18): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\GitHub\openvr\src\vrcore\pathtools_public.cpp(557,19): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\GitHub\openvr\src\vrcore\pathtools_public.cpp(888,8): warning C4996: 'strnicmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnicmp. See online help for details.
+  sharedlibtools_public.cpp
+  hmderrors_public.cpp
+D:\GitHub\openvr\src\vrcore\hmderrors_public.cpp(368,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  vrpathregistry_public.cpp
+  strtools_public.cpp
+D:\GitHub\openvr\src\vrcore\strtools_public.cpp(47,14): warning C4996: 'strnicmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnicmp. See online help for details.
+D:\GitHub\openvr\src\vrcore\strtools_public.cpp(66,14): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\GitHub\openvr\src\vrcore\strtools_public.cpp(226,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Generating Code...
+  openvr_api64.vcxproj -> D:\GitHub\openvr\bin\win64\Release\openvr_api64.lib

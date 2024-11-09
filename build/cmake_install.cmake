@@ -1,4 +1,4 @@
-# Install script for directory: X:/GitHub_RSN/openvr
+# Install script for directory: D:/GitHub/openvr
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("X:/GitHub_RSN/openvr/build/src/cmake_install.cmake")
+  include("D:/GitHub/openvr/build/src/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "X:/GitHub_RSN/openvr/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/GitHub/openvr/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,4 +1,4 @@
-# Install script for directory: X:/GitHub_RSN/openvr/src
+# Install script for directory: D:/GitHub/openvr/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,21 +34,21 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "X:/GitHub_RSN/openvr/bin/win64/Debug/openvr_api64.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "D:/GitHub/openvr/bin/win64/Debug/openvr_api64.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "X:/GitHub_RSN/openvr/bin/win64/Release/openvr_api64.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "D:/GitHub/openvr/bin/win64/Release/openvr_api64.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "X:/GitHub_RSN/openvr/bin/win64/MinSizeRel/openvr_api64.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "D:/GitHub/openvr/bin/win64/MinSizeRel/openvr_api64.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "X:/GitHub_RSN/openvr/bin/win64/RelWithDebInfo/openvr_api64.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "D:/GitHub/openvr/bin/win64/RelWithDebInfo/openvr_api64.lib")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/openvr" TYPE FILE FILES
-    "X:/GitHub_RSN/openvr/src/../headers/openvr_driver.h"
-    "X:/GitHub_RSN/openvr/src/../headers/openvr_capi.h"
-    "X:/GitHub_RSN/openvr/src/../headers/openvr.h"
+    "D:/GitHub/openvr/src/../headers/openvr_driver.h"
+    "D:/GitHub/openvr/src/../headers/openvr_capi.h"
+    "D:/GitHub/openvr/src/../headers/openvr.h"
     )
 endif()
 

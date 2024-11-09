@@ -22,9 +22,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{34929845-5EC7-3E26-8A64-62785E225165}</ProjectGuid>
+    <ProjectGuid>{CBE920B7-73D6-324D-ACA5-49CDE77589FA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
     <ProjectName>openvr_api64</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
@@ -59,26 +59,26 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">X:\GitHub_RSN\openvr\bin\win64\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\GitHub\openvr\bin\win64\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">openvr_api64.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">openvr_api64</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">X:\GitHub_RSN\openvr\bin\win64\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\GitHub\openvr\bin\win64\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">openvr_api64.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">openvr_api64</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">X:\GitHub_RSN\openvr\bin\win64\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\GitHub\openvr\bin\win64\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">openvr_api64.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">openvr_api64</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">X:\GitHub_RSN\openvr\bin\win64\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\GitHub\openvr\bin\win64\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">openvr_api64.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">openvr_api64</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -95,10 +95,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;VR_API_PUBLIC;OPENVR_BUILD_STATIC;WIN64;VRCORE_NO_PLATFORM;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -111,7 +111,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -128,10 +128,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;VR_API_PUBLIC;OPENVR_BUILD_STATIC;WIN64;VRCORE_NO_PLATFORM;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -144,7 +144,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -161,10 +161,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;VR_API_PUBLIC;OPENVR_BUILD_STATIC;WIN64;VRCORE_NO_PLATFORM;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -177,7 +177,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -193,10 +193,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;VR_API_PUBLIC;OPENVR_BUILD_STATIC;WIN64;VRCORE_NO_PLATFORM;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>X:\GitHub_RSN\openvr\src;X:\GitHub_RSN\openvr\src\..\headers;X:\GitHub_RSN\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\openvr\src;D:\GitHub\openvr\src\..\headers;D:\GitHub\openvr\src\vrcore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -208,12 +208,12 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="X:\GitHub_RSN\openvr\src\CMakeLists.txt">
+    <CustomBuild Include="D:\GitHub\openvr\src\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule X:/GitHub_RSN/openvr/src/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/GitHub/openvr/src/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SX:/GitHub_RSN/openvr -BX:/GitHub_RSN/openvr/build --check-stamp-file X:/GitHub_RSN/openvr/build/src/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/GitHub/openvr -BD:/GitHub/openvr/build --check-stamp-file D:/GitHub/openvr/build/src/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -222,12 +222,12 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">X:\GitHub_RSN\openvr\build\src\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\GitHub\openvr\build\src\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule X:/GitHub_RSN/openvr/src/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/GitHub/openvr/src/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SX:/GitHub_RSN/openvr -BX:/GitHub_RSN/openvr/build --check-stamp-file X:/GitHub_RSN/openvr/build/src/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/GitHub/openvr -BD:/GitHub/openvr/build --check-stamp-file D:/GitHub/openvr/build/src/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -236,12 +236,12 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">X:\GitHub_RSN\openvr\build\src\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\GitHub\openvr\build\src\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule X:/GitHub_RSN/openvr/src/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/GitHub/openvr/src/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SX:/GitHub_RSN/openvr -BX:/GitHub_RSN/openvr/build --check-stamp-file X:/GitHub_RSN/openvr/build/src/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/GitHub/openvr -BD:/GitHub/openvr/build --check-stamp-file D:/GitHub/openvr/build/src/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -250,12 +250,12 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">X:\GitHub_RSN\openvr\build\src\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\GitHub\openvr\build\src\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule X:/GitHub_RSN/openvr/src/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/GitHub/openvr/src/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SX:/GitHub_RSN/openvr -BX:/GitHub_RSN/openvr/build --check-stamp-file X:/GitHub_RSN/openvr/build/src/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/GitHub/openvr -BD:/GitHub/openvr/build --check-stamp-file D:/GitHub/openvr/build/src/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -264,24 +264,24 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">X:\GitHub_RSN\openvr\build\src\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\GitHub\openvr\build\src\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\openvr_api_public.cpp" />
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\jsoncpp.cpp" />
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\vrcore\dirtools_public.cpp" />
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\vrcore\envvartools_public.cpp" />
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\vrcore\pathtools_public.cpp" />
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\vrcore\sharedlibtools_public.cpp" />
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\vrcore\hmderrors_public.cpp" />
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\vrcore\vrpathregistry_public.cpp" />
-    <ClCompile Include="X:\GitHub_RSN\openvr\src\vrcore\strtools_public.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\openvr_api_public.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\jsoncpp.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\vrcore\dirtools_public.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\vrcore\envvartools_public.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\vrcore\pathtools_public.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\vrcore\sharedlibtools_public.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\vrcore\hmderrors_public.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\vrcore\vrpathregistry_public.cpp" />
+    <ClCompile Include="D:\GitHub\openvr\src\vrcore\strtools_public.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="X:\GitHub_RSN\openvr\build\ZERO_CHECK.vcxproj">
-      <Project>{2B321217-5455-33CE-A2CD-2E624FEA35A6}</Project>
+    <ProjectReference Include="D:\GitHub\openvr\build\ZERO_CHECK.vcxproj">
+      <Project>{78D68301-4D73-311C-9002-EAE6BB375E49}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

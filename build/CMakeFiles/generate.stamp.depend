@@ -94,8 +94,8 @@ C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows-MSVC-CXX.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows-MSVC.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake
-X:/GitHub_RSN/openvr/CMakeLists.txt
-X:/GitHub_RSN/openvr/build/CMakeFiles/3.26.0-rc4/CMakeCCompiler.cmake
-X:/GitHub_RSN/openvr/build/CMakeFiles/3.26.0-rc4/CMakeCXXCompiler.cmake
-X:/GitHub_RSN/openvr/build/CMakeFiles/3.26.0-rc4/CMakeRCCompiler.cmake
-X:/GitHub_RSN/openvr/build/CMakeFiles/3.26.0-rc4/CMakeSystem.cmake
+D:/GitHub/openvr/CMakeLists.txt
+D:/GitHub/openvr/build/CMakeFiles/3.26.0-rc4/CMakeCCompiler.cmake
+D:/GitHub/openvr/build/CMakeFiles/3.26.0-rc4/CMakeCXXCompiler.cmake
+D:/GitHub/openvr/build/CMakeFiles/3.26.0-rc4/CMakeRCCompiler.cmake
+D:/GitHub/openvr/build/CMakeFiles/3.26.0-rc4/CMakeSystem.cmake
