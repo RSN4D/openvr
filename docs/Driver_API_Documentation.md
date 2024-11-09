@@ -78,6 +78,7 @@
         - [Binding Duplication](#binding-duplication)
         - [Emulateable Devices](#emulateable-devices)
     - [Render Models](#render-models)
+    - [Chaperone](#chaperone)
     - [Building & Development Environment](#building--development-environment)
         - [Debugging SteamVR with Visual Studio](#debugging-steamvr-with-visual-studio)
 - [Further Examples](#further-examples)
@@ -1171,6 +1172,26 @@ right and covers a single eye.
 * `float fU` - The current U coordinate.
 * `float fV` - The current V coordinate.
 
+```c++
+virtual bool ComputeInverseDistortion( HmdVector2_t *pResult, EVREye eEye, uint32_t unChannel, float fU, float fV ) = 0;
+```
+`ComputeInverseDistortion` is called by the runtime to get the result of the inverse distortion function for the specified eye,
+channel and uv.
+
+Drivers **may** return false from this method to indicate that the runtime should infer an estimate from
+the result returned by `IVRDisplayComponent::ComputeDistortion`.
+
+Returning true from method indicates to the runtime that it should not try to estimate the inverse, and instead use the
+values provided by the driver.
+
+* `HmdVector2_t *pResult` - Driver should write into this with the result for the specified UV.
+* `EVREye eEye` - The eye to get the distortion for. The possible options are:
+    * `Eye_Left` - The left eye.
+    * `Eye_Right` - The right eye.
+* `uint32_t unChannel` - Which channel is requested. 0 for red, 1 for blue, 2 for green.
+* `float fU` - The current U coordinate.
+* `float fV` - The current V coordinate.
+
 #### IVRDriverDirectModeComponent
 
 `IVRDriverDirectModeComponent` is used for drivers that implement direct mode entirely on their own without allowing the
@@ -1729,8 +1750,6 @@ A wrapper for this interface is provided in `samples/utils/driverlog` to make th
 like a `printf` function.
 
 ## IVRWatchdogProvider
-
-### The watchdog interface is deprecated and should no longer be used for new projects.
 
 `IVRWatchdogProvider` provides an interface that is loaded into `steam.exe` to receive driver-defined events that should
 wake the runtime. For example, this could be turning on controllers, or putting the HMD on.
@@ -3199,9 +3218,15 @@ _**This feature only applies to SteamVR v1.26 and higher. In earlier versions th
 
 If an application does not provide a binding for your device SteamVR will try to use the remappings file to convert an existing binding to work with your device. This works for SteamVR Input and OpenXR applications.
 
-The remapping json has an array of `layouts` which then have an array of `remappings`. Remappings specify a path, but can also specify a mode, and a specific input. When converting a binding SteamVR will look for the highest priority layout that the application has a binding for. Then it copies that binding profile and loops through each binding. For each binding it will check if there is a matching `remapping` and apply the conversion. If there is not a remapping for that binding it will just copy it across verbatim. 
+When converting a binding, SteamVR will look for the highest priority `layout` that the application has a binding for. Then it reads the binding profile and assesses each binding. For each binding, it will check if there is a matching `autoremapping` or `remapping` and apply the conversion. If there is no match for that binding, it will just copy it across verbatim. 
 
-Remappings come in three types: input, mode, and component. When remapping a binding SteamVR checks for the most specific remappings first - input remappings (ex: click). Then we search for mode remappings (ex: button). And finally component remappings (ex: /user/hand/left/trigger). We'll only use one remapping per binding unless it has the remapping_mode: 'multiple' listed. This lets us do simple things like remapping the a button to the x button. But also more complex things like the various modes/inputs of a trigger style grip to a force sensor style grip.
+The remapping json has an array of `layouts` which then have an array of `autoremappings` and/or an array of `remappings`. These arrays list instructions for how to map from one binding to another. When the `autoremappings` and `remappings` are taken together, they must collectively specify all differences between two controllers. For example if you're remapping `from` a `knuckles` controller type, it has A/B buttons with touch sensors. If you're mapping to a controller that has those buttons but does not have touch sensors on them, then you'll need to provide either an `autoremapping`, or a set of `remappings` to convert the touch bindings to click bindings. You can do this explicitly with `remappings` but we recommend using `autoremappings` instead as SteamVR determines all of those binding scenarios for you. 
+
+The `autoremappings` objects simply specify a component to remap `from` and a component to remap `to`. SteamVR will determine all the binding scenarios needed to do that remapping. Internally SteamVR does this by looking up the components and their capabilities in their respective input profiles, then adding an array of `remapping` objects based on predefined templates. Because of this, autoremappings are only available to remap `from` the built-in controller types: `vive_controller`, `oculus_touch`, `knuckles` and `khr_simple_controller`. This method of remapping is the easiest to define and therefore least prone to errors since we draw from a predefined collection of binding types. If you have a relatively standard layout we recommend using `autoremappings` as much as possible instead of explicitly defining `remappings`.
+
+The `remappings` objects give you more explicit control over how to remap one component to another. If you need to do an uncommon remapping (like A/B to a touchpad) you can specify all the individual binding scenarios that would apply. You'll need to specify a `remapping` object to apply to every type of binding that can be made. `Remapping` objects come in three types: `input`, `mode`, and component. `Input` remappings cover a specific mode's input, `mode` remappings cover all inputs in a mode, component remappings cover all modes and inputs. 
+
+When remapping a binding, SteamVR checks for the most specific `remappings` first - `input` remappings (ex: click). Then `mode` remappings (ex: button). Finally, component remappings (ex: /user/hand/left/trigger). This lets us do simple things like remapping the A button to the X button. But also more complex things like the various modes/inputs of a trigger style grip to a force sensor style grip. We'll only use one remapping per binding unless it has the `remapping_mode` `multiple` listed (see [One-to-Many Remappings](#one-to-many-remappings)).
 
 #### File Structure
 * `to_controller_type` - Required. This **must** be set to the device's `controller_type`.
@@ -3211,7 +3236,12 @@ Remappings come in three types: input, mode, and component. When remapping a bin
     * `simulate_controller_type` (default: true) - Optional. If this layout should also add the controller simulation option to the binding. 
     * `simulate_render_model` (default: true) - Optional. If this layout should also add the controller render model simulation option to the binding. 
     * `simulate_HMD` (default: true) - Optional. If this layout should also add the HMD simulation option to the binding. 
-    * `remappings` - Optional. Array of remapping objects. If all of your components are the same you don't need this.
+    * `autoremappings` - Optional. Array of autoremapping objects. If all of your components are _exactly_ the same you don't need this.
+        * `from` - Required. A string component path. Ex: "/user/hand/right/input/trigger"
+        * `to` - Required. A string component path or a list of string component paths. Ex: "/user/hand/right/input/trigger" or: ["/user/hand/right/input/trigger", "/user/hand/right/input/grip"]
+        * `parameters` - Optional. Object listing parameters to use for the resulting mapping.
+        * `mirror` (default: true) - Optional. By default we duplicate and mirror component paths from left to right and right to left.
+    * `remappings` - Optional. Array of remapping objects. If all of your components are _exactly_ the same you don't need this.
         * `from` - Required. An object specifying the type(s) of binding(s) to recognize.
             * `path` - Required. The full path of the component to remap bindings from.
             * `mode` - Optional. The type of binding mode to remap bindings from.
@@ -3235,8 +3265,11 @@ Remappings come in three types: input, mode, and component. When remapping a bin
             * `multiple` - Specifies that there are multiple new bindings to be created from the binding this remapping applies to.
         * `mirror` (default: true) - Optional. By default we duplicate and mirror component paths from left to right and right to left. In most cases this means you only have to write one set of remappings instead of manually writing a set for /user/hand/left and another set of remappings for /user/hand/right. (this works for feet and elbows too)
 
+#### Autoremapping Parameters
+If your mapping is going from a digital input (button) to an analog input (trigger) you can optionally add click and touch thresholds to specify when those inputs should trigger. Specifically those parameters are: `click_activate_threshold`, `click_deactivate_threshold`, `touch_activate_threshold`, and `touch_deactivate_threshold`. Otherwise we'll use default values.
+
 #### One-to-Many Remappings
-You can make one component map to multiple components, or inputs, using "remapping_mode" : "multiple". This has to be added to each remapping object you want to be used. If you want to keep the original binding as well add a component mapping with the same from/to. For example the following set of remappings will copy all the joystick bindings and make new bindings for a component called thumbstick, another set for a component called trackpad, and then keep the original joystick bindings.
+You can make one component map to multiple components, or inputs, using "remapping_mode" : "multiple". This has to be added to each remapping object you want to be used. If you want to keep the original binding as well add a component mapping with the same from/to. You must also add a `multiple_group` member with an identifier that is unique to each group of remappings. For example the following set of remappings will copy all the joystick bindings and make new bindings for a component called thumbstick, another set for a component called trackpad, and then keep the original joystick bindings.
 
 ```json
         {
@@ -3247,7 +3280,8 @@ You can make one component map to multiple components, or inputs, using "remappi
             "path" : "/user/hand/right/input/thumbstick",
             "parameters_mode": "copy"
           },
-          "remapping_mode" : "multiple"
+          "remapping_mode" : "multiple",
+          "multiple_group" : "joystick_to_thumbstick"
         },
         {
           "from": {
@@ -3257,7 +3291,8 @@ You can make one component map to multiple components, or inputs, using "remappi
             "path" : "/user/hand/right/input/trackpad",
             "parameters_mode": "copy"
           },
-          "remapping_mode" : "multiple"
+          "remapping_mode" : "multiple",
+          "multiple_group" : "joystick_to_trackpad"
         },
         {
           "from": {
@@ -3267,12 +3302,13 @@ You can make one component map to multiple components, or inputs, using "remappi
             "path" : "/user/hand/right/input/joystick",
             "parameters_mode": "copy"
           },
-          "remapping_mode" : "multiple"
+          "remapping_mode" : "multiple",
+          "multiple_group" : "joystick_to_joystick"
         },
 ```
 
 #### Examples
-You can find many examples of rebinding files in the drivers for included controller types. For example, from your SteamVR folder SteamVR\drivers\indexcontroller\resources\input\index_controller_remapping.json
+You can find many examples of rebinding files in the drivers for included controller types. From your SteamVR folder `SteamVR\drivers\indexcontroller\resources\input\index_controller_remapping.json` or `SteamVR\resources\input\`.
 
 
 ### Emulating Devices in Bindings
@@ -3470,6 +3506,82 @@ will be set in the override property container.
     * `Prop_ManufacturerName_String` - `HTC`
     * `legacy_buttons` - `[ 0, 1, 2, 32, 33 ]`
     * `legacy_axis` - `[ 1, 3, 0, 0, 0 ]`
+
+## Chaperone
+
+The SteamVR Chaperone system provides visible boundaries for users when inside VR, which should be
+shown at the edges of the play space to avoid collisions with other objects.  
+
+The chaperone system is also responsible for keeping track of the relation between the driver's raw
+tracking space (the tracking space in which the driver provides poses to the runtime through 
+`IVRServerDriverHost::TrackedDevicePoseUpdate`) and the seated and standing universe origins that applications
+query poses relative to.
+
+A description of each of the universes is below, along with their corresponding json property:
+
+    * `TrackingUniverseSeated (seated)` - Useful for applications that need to render content relative to the user's resting head position, such as presenting a cockpit view in simulators.
+    * `TrackingUniverseStanding (standing)` - This is some point on the floor of the tracking space, where y = 0 **must** always be the floor in this tracking space. Useful for applications that want to render content that should scale to the user's real world setup, such as placing the floor at the same location.
+    * "Setup standing (setup_standing2)" - An origin from the raw tracking space. This is some point on the floor which is the center of the play space. The universe is not visible to applications, but the driver **may** choose to use it to break the dependency between where the standing origin should be, and where SteamVR should place the collision bounds relative to. It is optional for the driver to provide this, and if ommitted, it will default to being the same as the standing universe.
+
+Any driver that provides its own tracking solution **should** provide its own chaperone setup.
+
+A driver provides its chaperone setup as a json file. A driver **may** either provide an absolute path
+to the chaperone json file it wishes to present to SteamVR, or provide a json string by setting
+the `Prop_DriverProvidedChaperoneJson_String` property of the HMD container.
+
+A driver **may** provide multiple "universes", where (in this context), a universe represents a different
+location in the real world that requires a separate chaperone setup, such as switching to a different room.
+
+SteamVR only allows one chaperone universe to be active at a time. A driver **must** specify the 
+universe that it wishes to use by setting the `Prop_CurrentUniverseId_Uint64` property to the universe id
+it wises to use (more details below).
+
+The provided json **must** be valid, with no trailing commas, but **may** contain comments prefixed by `//`.
+
+    * `json_id` - **required**. Set to `chaperone_info`.
+    * `version` - **required**. Current chaperone json version is `5`.
+    * `time` - **required**. The ISO timestamp when the chaperone file was last modified.   
+    * `universes` - A json array containing json objects that contain:
+        * `collision_bounds` - An array that contains sets of polygons (An array that **should** 
+            contain arrays that contains arrays of 4 elements (the polygons),
+            where each element is an array that contains the x,y,z positions of each vertex).
+            Collision bounds are relative to the **setup standing** play space.
+            Drivers **should** provide 4 vertices per face they are drawing. Drivers **should**
+            provide vertices that are all on the same vertical plane as eachother.
+        * `play_area` - An array that contains two values: `[width, height]` of the play space.
+            The width and height are driver-defined, but **should** represent largest rectangle that 
+            can represent the playable area.
+        * `<seated/standing/setup_standing2>` - A json object that represents the relation between the driver's raw
+            tracking space and the specified universe origin. Drivers **must** provide seated and standing relations,
+            but **may** omit the setup standing universe. In this case, the setup standing universe will be
+            set to what was set for the standing property (see next paragraph). Each **must** contain the following properties:
+            * `translation` - The position offset between the raw origin and the universe's origin
+            * `yaw` - The rotation on the x,z plane between the raw space and universe's space
+        * `universeID` - The id of the universe. This **must** be a uint32 number and **must** be 
+            unique for each different universe.
+
+The driver **must** either:
+1. Set both the setup standing and standing origins.
+    * In this case, the setup standing origin is treated as the center of the play area. The standing origin is free to be placed elsewhere
+2. Set only the standing origin.
+    * In this case, the standing origin is treated as the center of the play area.
+
+### Recentering
+
+The recentering feature in SteamVR allows the user to update the standing and seated universe positions
+while inside SteamVR. This can be useful to reposition your height in a cockpit, or to reposition
+room-scale content relative to a different real-world position.
+
+Initially, the transforms for the standing and seated universes are set by the driver provided chaperone file.
+When a user requests a recenter, SteamVR updates the standing and seated transforms it holds in memory,
+and will attempt to update the seated universe (and only seated universe) in the chaperone file if
+the driver provided one, and that file is writeable. SteamVR **will not** attempt to modify the standing transform.
+
+If a driver wants to configure the way recentering is handled,
+it **may** configure the `Prop_Driver_RecenterSupport_Int32` property with one of the following values:
+* `k_EVRDriverRecenterSupport_SteamVRHandlesRecenter` - Default. SteamVR shows a recenter but and will do the above when a user requests a recenter.
+* `k_EVRDriverRecenterSupport_NoRecenter` - Recentering is not supported and no recenter button will be shown in the UI.
+* `k_EVRDriverRecenterSupport_DriverHandlesRecenter` - A recenter button is shown and an event **will** be triggered for the driver to handle the recenter, but SteamVR will do no additional processing.
 
 ## Render Models
 

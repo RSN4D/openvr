@@ -22,9 +22,11 @@ namespace Valve.VR
 {
 """)
 
+if len(sys.argv) != 2:
+	sys.exit(-1);
+json_path = sys.argv[1]
 
-
-data = api_shared.loadfile('../headers/openvr_api.json', 'vr')
+data = api_shared.loadfile(json_path, 'vr')
 converttype = api_shared.converttype
 structlist = api_shared.structlist
 typedeflist = api_shared.typedeflist
@@ -101,6 +103,8 @@ print("""
 		[FieldOffset(0)] public VREvent_ShowUI_t showUi;
 		[FieldOffset(0)] public VREvent_ShowDevTools_t showDevTools;
 		[FieldOffset(0)] public VREvent_HDCPError_t hdcpError;
+		[FieldOffset(0)] public VREvent_AudioVolumeControl_t audioVolumeControl;
+		[FieldOffset(0)] public VREvent_AudioMuteControl_t audioMuteControl;
 		[FieldOffset(0)] public VREvent_Keyboard_t keyboard; // This has to be at the end due to a mono bug
 	}
 	""")
