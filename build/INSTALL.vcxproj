@@ -188,6 +188,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="D:\GitHub\openvr\build\ZERO_CHECK.vcxproj">
       <Project>{78D68301-4D73-311C-9002-EAE6BB375E49}</Project>

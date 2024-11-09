@@ -45,6 +45,18 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
+    include("D:/GitHub/openvr/build/src/CMakeFiles/openvr_api64.dir/install-cxx-module-bmi-Debug.cmake" OPTIONAL)
+  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    include("D:/GitHub/openvr/build/src/CMakeFiles/openvr_api64.dir/install-cxx-module-bmi-Release.cmake" OPTIONAL)
+  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
+    include("D:/GitHub/openvr/build/src/CMakeFiles/openvr_api64.dir/install-cxx-module-bmi-MinSizeRel.cmake" OPTIONAL)
+  elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
+    include("D:/GitHub/openvr/build/src/CMakeFiles/openvr_api64.dir/install-cxx-module-bmi-RelWithDebInfo.cmake" OPTIONAL)
+  endif()
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/openvr" TYPE FILE FILES
     "D:/GitHub/openvr/src/../headers/openvr_driver.h"
     "D:/GitHub/openvr/src/../headers/openvr_capi.h"
@@ -52,3 +64,9 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     )
 endif()
 
+string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
+       "${CMAKE_INSTALL_MANIFEST_FILES}")
+if(CMAKE_INSTALL_LOCAL_ONLY)
+  file(WRITE "D:/GitHub/openvr/build/src/install_local_manifest.txt"
+     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
+endif()
